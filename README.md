@@ -51,48 +51,43 @@ be obtained.
 The CDS retrieval can be done using a `Terminal` or by manual downloading the files
 
 ### For D. rerio
-* Danio_rerio.Zv9.75.cds.all.fa
-* Takifugu_rubripes.FUGU4.cds.all.fa
-* Astyanax_mexicanus.AstMex102.cds.all.fa
-* Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa
-* Oryzias_latipes.MEDAKA1.cds.all.fa
-* Gadus_morhua.gadMor1.cds.all.fa
+* ftp://ftp.ensembl.org/pub/release-77/fasta/danio_rerio/cds/Danio_rerio.Zv9.cds.all.fa.gz
+* ftp://ftp.ensembl.org/pub/release-77/fasta/takifugu_rubripes/cds/Takifugu_rubripes.FUGU4.cds.all.fa.gz
+* ftp://ftp.ensembl.org/pub/release-77/fasta/astyanax_mexicanus/cds/Astyanax_mexicanus.AstMex102.cds.all.fa.gz
+* ftp://ftp.ensembl.org/pub/release-77/fasta/xiphophorus_maculatus/cds/Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa.gz
+* ftp://ftp.ensembl.org/pub/release-77/fasta/oryzias_latipes/cds/Oryzias_latipes.MEDAKA1.cds.all.fa.gz
+* ftp://ftp.ensembl.org/pub/release-77/fasta/gadus_morhua/cds/Gadus_morhua.gadMor1.cds.all.fa.gz
+
 
 ### For D. melanogaster
-* dmel-all-CDS-r5.53.fasta
-* dsim-all-CDS-r1.4.fasta
-* dpse-all-CDS-r3.1.fasta
-* dper-all-CDS-r1.3.fasta
-* dvir-all-CDS-r1.2.fasta
+* ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r5.53_FB2013_05/fasta/dmel-all-CDS-r5.53.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_simulans/dsim_r1.4_FB2012_03/fasta/dsim-all-CDS-r1.4.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_pseudoobscura/dpse_r3.1_FB2013_02/fasta/dpse-all-CDS-r3.1.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_virilis/dvir_r1.2_FB2012_01/fasta/dvir-all-CDS-r1.2.fasta.gz
+
 
 ### For A. thaliana 
-* Athaliana_167_cds.fa
-* Alyrata_107_cds.fa
-* Brapa_197_cds.fa
-* Crubella_183_cds.fa
-* Thalophila_173_cds.fa
-
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Athaliana/annotation/Athaliana_167_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Alyrata/annotation/Alyrata_107_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Brapa/annotation/Brapa_197_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Crubella/annotation/Crubella_183_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_173_cds.fa.gz
 
 ```shell
 
 # download CDS file of A. thaliana
-curl ftp://ftp.ensemblgenomes.org/pub/
-plants/release-23/fasta/arabidopsis_thaliana/
-cds/Arabidopsis_thaliana.TAIR10.23.cds.all.fa.gz 
--o Arabidopsis_thaliana.TAIR10.23.cds.all.fa.gz
+curl ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Athaliana/annotation/Athaliana_167_cds.fa.gz -o Athaliana_167_cds.fa.gz
 
 # unzip the fasta file
-gunzip -d Arabidopsis_thaliana.TAIR10.23.cds.all.fa.gz
+gunzip -d Athaliana_167_cds.fa.gz
 
 # download CDS file of A. lyrata
 
-curl ftp://ftp.ensemblgenomes.org/pub/plants/
-release-23/fasta/arabidopsis_lyrata/cds/
-Arabidopsis_lyrata.v.1.0.23.cds.all.fa.gz 
--o Arabidopsis_lyrata.v.1.0.23.cds.all.fa.gz
+curl ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Alyrata/annotation/Alyrata_107_cds.fa.gz
+-o Alyrata_107_cds.fa.gz
 
 # unzip the fasta file
-gunzip -d Arabidopsis_lyrata.v.1.0.23.cds.all.fa.gz
+gunzip -d Alyrata_107_cds.fa.gz
 
 ```
 When the download is finished you need to unzip the files and
@@ -105,8 +100,8 @@ library(orthologr)
 
 # compute the divergence map of A. thaliana vs. A. lyrata
 Ath_vs_Aly_DM <- divergence_stratigraphy(
-                         query_file = "Arabidopsis_thaliana.TAIR10.23.cds.all.fa",
-                         subject_file = "Arabidopsis_lyrata.v.1.0.23.cds.all.fa",
+                         query_file = "Athaliana_167_cds.fa",
+                         subject_file = "Alyrata_107_cds.fa",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
 
