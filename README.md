@@ -402,4 +402,63 @@ dev.off()
 ## Supplementary Figures
 
 
+### Suppl_Figure 1
 
+
+```r
+svg("S1.svg",width = 16.9,height = 5)
+par(mfrow = c(1,4))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(8,1,0))
+
+PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+PlotPattern(Drerio_vs_Xmac_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+PlotPattern(Drerio_vs_Olat_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+
+PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+
+
+dev.off()
+
+```
