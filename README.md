@@ -73,6 +73,9 @@ The CDS retrieval can be done using a `Terminal` or by manual downloading the fi
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Crubella/annotation/Crubella_183_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_173_cds.fa.gz
 
+This is an example shell script how to download the CDS files
+as listed above:
+
 ```shell
 
 # download CDS file of A. thaliana
@@ -96,12 +99,120 @@ have all fasta files stored in the current working directory of
 your R session.
 
 ```r
+
 library(orthologr)
+
+### For Danio rerio
+
+# compute the divergence map of D. rerio vs. T. rubripes
+Drerio_vs_Trubripes_DM <- divergence_stratigraphy(
+                         query_file = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file = "Takifugu_rubripes.FUGU4.cds.all.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+
+
+
+# compute the divergence map of D. rerio vs. A. mexicanus
+Drerio_vs_Amexicanus_DM <- divergence_stratigraphy(
+                         query_file = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file = "Astyanax_mexicanus.AstMex102.cds.all.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+                         
+                         
+
+# compute the divergence map of D. rerio vs. X. maculatus
+Drerio_vs_Xmaculatus_DM <- divergence_stratigraphy(
+                         query_file = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file = "Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+
+
+
+# compute the divergence map of D. rerio vs. O. latipes
+Drerio_vs_Olatipes_DM <- divergence_stratigraphy(
+                         query_file = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file = "Oryzias_latipes.MEDAKA1.cds.all.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+
+
+
+# compute the divergence map of D. rerio vs. G. morhua
+Drerio_vs_Gmorhua_DM <- divergence_stratigraphy(
+                         query_file = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file = "Gadus_morhua.gadMor1.cds.all.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+
+
+
+
+### For Drosophila melanogaster
+
+# compute the divergence map of D. melanogaster vs. D. simulans
+Dmel_vs_Dsim_DM <- divergence_stratigraphy(
+                         query_file = "dmel-all-CDS-r5.53.fasta",
+                         subject_file = "dsim-all-CDS-r1.4.fasta",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+
+
+# compute the divergence map of D. melanogaster vs. D. pseudoobscura
+Dmel_vs_Dpse_DM <- divergence_stratigraphy(
+                         query_file = "dmel-all-CDS-r5.53.fasta",
+                         subject_file = "dpse-all-CDS-r3.1.fasta",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+                         
+
+# compute the divergence map of D. melanogaster vs. D. virilis
+Dmel_vs_Dvir_DM <- divergence_stratigraphy(
+                         query_file = "dmel-all-CDS-r5.53.fasta",
+                         subject_file = "dvir-all-CDS-r1.2.fasta",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+
+
+### For Arabidopsis thaliana
 
 # compute the divergence map of A. thaliana vs. A. lyrata
 Ath_vs_Aly_DM <- divergence_stratigraphy(
                          query_file = "Athaliana_167_cds.fa",
                          subject_file = "Alyrata_107_cds.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+
+
+# compute the divergence map of A. thaliana vs. B. rapa
+Ath_vs_Brapa_DM <- divergence_stratigraphy(
+                         query_file = "Athaliana_167_cds.fa",
+                         subject_file = "Brapa_197_cds.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+  
+  
+  
+# compute the divergence map of A. thaliana vs. C. rubella
+Ath_vs_Crubella_DM <- divergence_stratigraphy(
+                         query_file = "Athaliana_167_cds.fa",
+                         subject_file = "Crubella_183_cds.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+
+# compute the divergence map of A. thaliana vs. T. halophila
+Ath_vs_Thalophila_DM <- divergence_stratigraphy(
+                         query_file = "Athaliana_167_cds.fa",
+                         subject_file = "Thalophila_173_cds.fa",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
 
@@ -128,15 +239,15 @@ Athaliana_PhyloExpressionSet <- read.xls()
 # Danio rerio
 
 # D. rerio vs. F. rubripes
-Drerio_vs_Frubripes_DivergenceExpressionSet <- read.xls()
+Drerio_vs_Frubripes_DivergenceExpressionSet <- read.csv("Danio_Takifugu_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. rerio vs. A. mexicanus
-Drerio_vs_Amex_DivergenceExpressionSet <- read.xls()
+Drerio_vs_Amex_DivergenceExpressionSet <- read.csv("Danio_Astyanax_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. rerio vs. X. maculatus
-Drerio_vs_Xmac_DivergenceExpressionSet <- read.xls()
+Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. rerio vs. O. latipes
-Drerio_vs_Olat_DivergenceExpressionSet <- read.xls()
+Drerio_vs_Olat_DivergenceExpressionSet <- read.csv("Danio_Oryzias_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. rerio vs. G. morhua
-Drerio_vs_Gmor_DivergenceExpressionSet <- read.xls()
+Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_RBH_decil_kaks_expFile.csv", header = TRUE)
 
 
 
