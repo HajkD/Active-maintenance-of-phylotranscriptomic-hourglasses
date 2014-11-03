@@ -27,9 +27,7 @@ Following steps are performed to obtain a standard divergence map based on the `
 # install_github("HajkD/orthologr", build_vignettes = TRUE, dependencies = TRUE)
 library(orthologr)
 
-# install package 'myTAI': https://github.com/HajkD/myTAI
-# library(devtools)
-# install_github("HajkD/myTAI", build_vignettes = TRUE, dependencies = TRUE)
+# install package 'myTAI': install.packages("myTAI")
 library(myTAI)
 
 # install.packages("gdata")
@@ -73,8 +71,7 @@ The CDS retrieval can be done using a `Terminal` or by manual downloading the fi
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Crubella/annotation/Crubella_183_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_173_cds.fa.gz
 
-This is an example shell script how to download the CDS files
-as listed above:
+This is an example shell script how to download the CDS files listed above:
 
 ```shell
 
@@ -226,12 +223,14 @@ the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis 
 
 ```r
 
+library(gdata)
+
 ### read data sets
 
 ## read PhyloExpressionSets
-Drerio_PhyloExpressionSet <- read.xls()
-Dmelanogaster_PhyloExpressionSet <- read.xls()
-Athaliana_PhyloExpressionSet <- read.xls()
+Drerio_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 1)
+Dmelanogaster_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 2)
+Athaliana_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 3)
 
 
 ## read DivergenceExpressionSets
@@ -247,42 +246,35 @@ Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_RBH_decil_
 # D. rerio vs. O. latipes
 Drerio_vs_Olat_DivergenceExpressionSet <- read.csv("Danio_Oryzias_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. rerio vs. G. morhua
-Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_RBH_decil_kaks_expFile.csv", header = TRUE)
+Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 
 
 
 # Drosophila melanogaster
 
 # D. melanogaster vs. D. simulans
-Dmel_Dsim_DivergenceExpressionSet <- read.xls()
-# D. melanogaster vs. D. ananassae
-Dmel_Dana_DivergenceExpressionSet <- read.xls()
+Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. pseudoobscura
-Dmel_Dpse_DivergenceExpressionSet <- read.xls()
+Dmel_Dpse_DivergenceExpressionSet <- read.csv("dmel_dpse_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. persimilis
-Dmel_Dper_DivergenceExpressionSet <- read.xls()
+Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. virilis
-Dmel_Dvir_DivergenceExpressionSet <- read.xls()
+Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 
 
 
 # Arabidopsis thaliana
 # A. thaliana vs A. lyrata
-Ath_Aly_DivergenceExpressionSet <- read.xls()
+Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # A thaliana vs. B. rapa 
-Ath_Bra_DivergenceExpressionSet <- read.xls()
+Ath_Bra_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # A thaliana vs. T. halophila
-Ath_Tha_DivergenceExpressionSet <- read.xls()
+Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. rubella
-Ath_Crub_DivergenceExpressionSet <- read.xls()
+Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
 
 
 ```
-
-## Testing the statistical significance of observed phylotranscriptomics patterns
-
-
-
 
 ## Generating Figures
 
@@ -308,7 +300,7 @@ par(mgp = c(8,1,0))
 
 PlotPattern(Drerio_PhyloExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
@@ -319,7 +311,7 @@ title(ylab = "TAI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
 PlotPattern(Dmelanogaster_PhyloExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 par(xpd = TRUE)
@@ -329,7 +321,7 @@ title(ylab = "TAI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
 PlotPattern(Athaliana_PhyloExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 par(xpd = TRUE)
@@ -374,7 +366,7 @@ par(mgp = c(8,1,0))
 
 PlotPattern(Drerio_vs_Frubripes_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
@@ -385,7 +377,7 @@ title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
 PlotPattern(Dmel_Dsim_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 par(xpd = TRUE)
@@ -395,7 +387,7 @@ title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
 PlotPattern(Ath_Aly_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
-            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 par(xpd = TRUE)
