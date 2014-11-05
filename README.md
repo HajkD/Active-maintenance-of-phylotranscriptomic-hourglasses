@@ -466,7 +466,7 @@ legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0(Drerio_vs_Olat_DivergenceExpressionSet : ",nrow(Drerio_vs_Olat_DivergenceExpressionSet), " genes."))
+cat(paste0("Drerio_vs_Olat_DivergenceExpressionSet : ",nrow(Drerio_vs_Olat_DivergenceExpressionSet), " genes."))
 cat("\n")
 
 PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
