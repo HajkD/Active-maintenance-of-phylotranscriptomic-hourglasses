@@ -23,14 +23,14 @@ Following steps are performed to obtain a standard divergence map based on the `
 ```r
 
 # install package 'orthologr' from: https://github.com/HajkD/orthologr
-# library(devtools)
-# install_github("HajkD/orthologr", build_vignettes = TRUE, dependencies = TRUE)
+install.packages("devtools") # note for wondows installation see https://github.com/HajkD/orthologr for details
+devtools::install_github("HajkD/orthologr", build_vignettes = TRUE, dependencies = TRUE)
 library(orthologr)
 
-# install package 'myTAI': install.packages("myTAI")
+install.packages("myTAI")
 library(myTAI)
 
-# install.packages("gdata")
+install.packages("gdata")
 library(gdata)
 
 ```
@@ -215,6 +215,11 @@ Ath_vs_Thalophila_DM <- divergence_stratigraphy(
 
 ```
 
+It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
+are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
+See `?myTAI::MatchMap` for details.
+
+
 ## Reading PhyloExpressionSets and DivergenceExpressionSets
 
 After performing __Phylostratigraphy__ and __Divergence Stratigraphy__ PhyloExpressionSets and
@@ -375,6 +380,9 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
+cat(paste0("Drerio_vs_Frubripes_DivergenceExpressionSet : ",nrow(Drerio_vs_Frubripes_DivergenceExpressionSet), " genes.")
+cat("\n")
+
 PlotPattern(Dmel_Dsim_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
@@ -384,6 +392,9 @@ par(xpd = TRUE)
 legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Dmel_Dsim_DivergenceExpressionSet : ",nrow(Dmel_Dsim_DivergenceExpressionSet), " genes.")
+cat("\n")
 
 PlotPattern(Ath_Aly_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
@@ -395,6 +406,9 @@ legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
+cat(paste0("Ath_Aly_DivergenceExpressionSet : ",nrow(Ath_Aly_DivergenceExpressionSet), " genes.")
+cat("\n")
+
 dev.off()
 
 ```
@@ -403,7 +417,6 @@ dev.off()
 
 
 ### Suppl_Figure 1
-
 
 ```r
 svg("S1.svg",width = 16.9,height = 5)
@@ -423,6 +436,10 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
+cat(paste0("Drerio_vs_Amex_DivergenceExpressionSet : ",nrow(Drerio_vs_Amex_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+
 PlotPattern(Drerio_vs_Xmac_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
@@ -433,6 +450,10 @@ par(xpd = TRUE)
 legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Drerio_vs_Xmac_DivergenceExpressionSet : ",nrow(Drerio_vs_Xmac_DivergenceExpressionSet), " genes."))
+cat("\n")
+
 
 PlotPattern(Drerio_vs_Olat_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
@@ -445,6 +466,8 @@ legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
+cat(paste0(Drerio_vs_Olat_DivergenceExpressionSet : ",nrow(Drerio_vs_Olat_DivergenceExpressionSet), " genes."))
+cat("\n")
 
 PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
@@ -453,12 +476,123 @@ PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet , TestStatistic = "ReductiveH
 
 
 par(xpd = TRUE)
+legend("topleft",legend = expression(bold("D")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Drerio_vs_Gmor_DivergenceExpressionSet : ",nrow(Drerio_vs_Gmor_DivergenceExpressionSet), " genes."))
+
+dev.off()
+
+```
+
+
+### Suppl_Figure 2
+
+```r
+svg("S2.svg",width = 16.9,height = 5)
+par(mfrow = c(1,3))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(8,1,0))
+
+PlotPattern(Dmel_Dpse_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Dmel_Dpse_DivergenceExpressionSet : ",nrow(Dmel_Dpse_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+
+PlotPattern(Dmel_Dper_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Dmel_Dper_DivergenceExpressionSet : ",nrow(Dmel_Dper_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+PlotPattern(Dmel_Dvir_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
 legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-
+cat(paste0("Dmel_Dvir_DivergenceExpressionSet : ",nrow(Dmel_Dvir_DivergenceExpressionSet), " genes."))
+cat("\n")
 
 dev.off()
+```
 
+### Suppl_Figure 3
+
+```r
+svg("S3.svg",width = 16.9,height = 5)
+par(mfrow = c(1,3))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(8,1,0))
+
+PlotPattern(Ath_Bra_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Ath_Bra_DivergenceExpressionSet : ",nrow(Ath_Bra_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+
+PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Ath_Tha_DivergenceExpressionSet : ",nrow(Ath_Tha_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+PlotPattern(Ath_Crub_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Ath_Crub_DivergenceExpressionSet : ",nrow(Ath_Crub_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+dev.off()
 ```
