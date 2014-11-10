@@ -95,6 +95,9 @@ then start R to perform the following analyses. Make sure you
 have all fasta files stored in the current working directory of
 your R session.
 
+When using the `divergence_stratigraphy()` function, you can specify the `comp_cores`
+argument to perform parallel computations on a multicore machine.
+
 ```r
 
 library(orthologr)
@@ -348,13 +351,13 @@ par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
 PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Frubripes_DivergenceExpressionSet , 
-                method = "kendall", main.text = "Kendall's ")
+                method = "kendall", main.text = "")
 
 PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dsim_DivergenceExpressionSet, 
-                method = "kendall", main.text = "Kendall's ")
+                method = "kendall", main.text = "")
 
 PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Aly_DivergenceExpressionSet, 
-                method = "kendall", main.text = "Kendall's ")
+                method = "kendall", main.text = "")
 
 dev.off()
 ```
@@ -369,9 +372,9 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Drerio_vs_Frubripes_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
-            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
+            shaded.area = TRUE, p.value = FALSE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
@@ -425,10 +428,11 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Drerio_vs_Frubripes_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "Drerio vs T. rubripes", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
 
 
 par(xpd = TRUE)
@@ -596,3 +600,15 @@ cat("\n")
 
 dev.off()
 ```
+
+# Supplementary Figure 4
+
+```r
+svg("S4.svg",width = 8,height = 5)
+PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest",
+            modules = list(early = 1:18, mid = 19:36, late = 37:61), shaded.area = TRUE, 
+            type = "l", lwd = 9,xlab = "Ontogeny", ylab = "TDI")
+
+dev.off()
+```
+
