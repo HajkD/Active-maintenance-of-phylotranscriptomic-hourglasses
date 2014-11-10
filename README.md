@@ -350,7 +350,7 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Frubripes_DivergenceExpressionSet , 
+PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Amex_DivergenceExpressionSet , 
                 method = "kendall", main.text = "")
 
 PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dsim_DivergenceExpressionSet, 
