@@ -246,40 +246,40 @@ Athaliana_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 3)
 # Danio rerio
 
 # D. rerio vs. F. rubripes
-Drerio_vs_Frubripes_DivergenceExpressionSet <- read.csv("Danio_Takifugu_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Drerio_vs_Frubripes_DivergenceExpressionSet <- read.csv("Danio_Takifugu_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. A. mexicanus
-Drerio_vs_Amex_DivergenceExpressionSet <- read.csv("Danio_Astyanax_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Drerio_vs_Amex_DivergenceExpressionSet <- read.csv("Danio_Astyanax_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. X. maculatus
-Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. O. latipes
-Drerio_vs_Olat_DivergenceExpressionSet <- read.csv("Danio_Oryzias_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Drerio_vs_Olat_DivergenceExpressionSet <- read.csv("Danio_Oryzias_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. G. morhua
-Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 
 
 
 # Drosophila melanogaster
 
 # D. melanogaster vs. D. simulans
-Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. pseudoobscura
-Dmel_Dpse_DivergenceExpressionSet <- read.csv("dmel_dpse_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Dmel_Dpse_DivergenceExpressionSet <- read.csv("dmel_dpse_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. persimilis
-Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. virilis
-Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 
 
 
 # Arabidopsis thaliana
 # A. thaliana vs A. lyrata
-Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. B. rapa 
-Ath_Bra_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Ath_Bra_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. T. halophila
-Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. rubella
-Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_RBH_decil_kaks_expFile.csv", sep = ";", header = TRUE)
+Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 
 
 ```
@@ -444,7 +444,7 @@ cat(paste0("Drerio_vs_Amex_DivergenceExpressionSet : ",nrow(Drerio_vs_Amex_Diver
 cat("\n")
 
 
-PlotPattern(Drerio_vs_Xmac_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Drerio_vs_Xmac_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
@@ -459,7 +459,7 @@ cat(paste0("Drerio_vs_Xmac_DivergenceExpressionSet : ",nrow(Drerio_vs_Xmac_Diver
 cat("\n")
 
 
-PlotPattern(Drerio_vs_Olat_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Drerio_vs_Olat_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
@@ -473,7 +473,7 @@ title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 cat(paste0("Drerio_vs_Olat_DivergenceExpressionSet : ",nrow(Drerio_vs_Olat_DivergenceExpressionSet), " genes."))
 cat("\n")
 
-PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
