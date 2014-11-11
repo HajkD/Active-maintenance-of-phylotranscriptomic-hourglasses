@@ -251,8 +251,6 @@ Drerio_vs_Frubripes_DivergenceExpressionSet <- read.csv("Danio_Takifugu_Divergen
 Drerio_vs_Amex_DivergenceExpressionSet <- read.csv("Danio_Astyanax_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. X. maculatus
 Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
-# D. rerio vs. O. latipes
-Drerio_vs_Olat_DivergenceExpressionSet <- read.csv("Danio_Oryzias_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. G. morhua
 Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 
