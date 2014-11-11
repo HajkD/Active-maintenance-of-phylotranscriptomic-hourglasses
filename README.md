@@ -423,7 +423,7 @@ dev.off()
 
 ```r
 svg("S1.svg",width = 16.9,height = 5)
-par(mfrow = c(1,4))
+par(mfrow = c(1,3))
 par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
@@ -459,20 +459,6 @@ cat(paste0("Drerio_vs_Xmac_DivergenceExpressionSet : ",nrow(Drerio_vs_Xmac_Diver
 cat("\n")
 
 
-PlotPattern(Drerio_vs_Olat_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
-            permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
-            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
-
-
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
-box()
-title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
-
-cat(paste0("Drerio_vs_Olat_DivergenceExpressionSet : ",nrow(Drerio_vs_Olat_DivergenceExpressionSet), " genes."))
-cat("\n")
-
 PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
@@ -480,7 +466,7 @@ PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet[ , 1:42] , TestStatistic = "R
 
 
 par(xpd = TRUE)
-legend("topleft",legend = expression(bold("D")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
@@ -612,3 +598,48 @@ PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet, TestStatistic = "ReductiveHo
 dev.off()
 ```
 
+
+### Suppl_Figure 5
+
+```r
+library(myTAI)
+
+rhScore_real <- rhScore(TAI(Athaliana_PhyloExpressionSet),
+                       method = "min",scoringMethod = "mean-mean", 
+                       early = 1:2, mid = 3:5, late = 6:7)
+                       
+rhScores <- apply(bootMatrix(Athaliana_PhyloExpressionSet, 10000), 1 , rhScore,
+                   method = "min",scoringMethod = "mean-mean",
+                   early = 1:2, mid = 3:5, late = 6:7)
+                   
+norm_MME <- fitdistrplus::fitdist(rhScores,distr = "norm",method = "mme")
+
+# estimate mean:
+mean_est <- norm_MME$estimate[1]
+# estimate sd:
+sd_est <- norm_MME$estimate[2]
+
+
+svg("S5.svg",width = 12,height = 5)
+par(mfrow=c(1,2))
+
+# generate Cullen and Frey graph
+fitdistrplus::descdist(rhScores)
+
+norm_distr <- function(x){ return(dnorm(x = x,mean = mean_est,sd = sd_est)) }
+
+# plot the density function and the histogram of rhScores
+curve(norm_distr,
+      xlim = c(min(rhScores),max(c(rhScores,rhScore_real))),
+      col = "steelblue",lwd = 5,xlab = "scores", ylab="Frequency")
+
+# plot the histogram of rhScores
+hist(rhScores,prob = TRUE,add = TRUE, breaks = 100,main = "10,000 permutations")
+rug(rhScores)
+
+# plot a red line at the position where we can find the real variance
+abline(v = rhScore_real, lwd = 5, col = "red")
+
+
+dev.off()
+```
