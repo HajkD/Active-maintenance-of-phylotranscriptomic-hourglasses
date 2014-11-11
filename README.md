@@ -53,23 +53,23 @@ The CDS retrieval can be done using a `Terminal` or by manual downloading the fi
 * ftp://ftp.ensembl.org/pub/release-77/fasta/takifugu_rubripes/cds/Takifugu_rubripes.FUGU4.cds.all.fa.gz
 * ftp://ftp.ensembl.org/pub/release-77/fasta/astyanax_mexicanus/cds/Astyanax_mexicanus.AstMex102.cds.all.fa.gz
 * ftp://ftp.ensembl.org/pub/release-77/fasta/xiphophorus_maculatus/cds/Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa.gz
-* ftp://ftp.ensembl.org/pub/release-77/fasta/oryzias_latipes/cds/Oryzias_latipes.MEDAKA1.cds.all.fa.gz
 * ftp://ftp.ensembl.org/pub/release-77/fasta/gadus_morhua/cds/Gadus_morhua.gadMor1.cds.all.fa.gz
 
 
 ### For D. melanogaster
 * ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r5.53_FB2013_05/fasta/dmel-all-CDS-r5.53.fasta.gz
 * ftp://ftp.flybase.net/genomes/Drosophila_simulans/dsim_r1.4_FB2012_03/fasta/dsim-all-CDS-r1.4.fasta.gz
-* ftp://ftp.flybase.net/genomes/Drosophila_pseudoobscura/dpse_r3.1_FB2013_02/fasta/dpse-all-CDS-r3.1.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_erecta/dere_r1.3_FB2014_03/fasta/dere-all-CDS-r1.3.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_persimilis/dper_r1.3_FB2014_03/fasta/dper-all-CDS-r1.3.fasta.gz
 * ftp://ftp.flybase.net/genomes/Drosophila_virilis/dvir_r1.2_FB2012_01/fasta/dvir-all-CDS-r1.2.fasta.gz
 
 
 ### For A. thaliana 
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Athaliana/annotation/Athaliana_167_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Alyrata/annotation/Alyrata_107_cds.fa.gz
-* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Brapa/annotation/Brapa_197_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Cpapaya/annotation/Cpapaya_113_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Crubella/annotation/Crubella_183_cds.fa.gz
-* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_173_cds.fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_117_cds_fa.gz
 
 This is an example shell script how to download the CDS files listed above:
 
@@ -133,14 +133,6 @@ Drerio_vs_Xmaculatus_DM <- divergence_stratigraphy(
 
 
 
-# compute the divergence map of D. rerio vs. O. latipes
-Drerio_vs_Olatipes_DM <- divergence_stratigraphy(
-                         query_file = "Danio_rerio.Zv9.cds.all.fa",
-                         subject_file = "Oryzias_latipes.MEDAKA1.cds.all.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
-
-
 
 # compute the divergence map of D. rerio vs. G. morhua
 Drerio_vs_Gmorhua_DM <- divergence_stratigraphy(
@@ -163,14 +155,23 @@ Dmel_vs_Dsim_DM <- divergence_stratigraphy(
                          
 
 
-# compute the divergence map of D. melanogaster vs. D. pseudoobscura
-Dmel_vs_Dpse_DM <- divergence_stratigraphy(
+# compute the divergence map of D. melanogaster vs. D. persimilis
+Dmel_vs_Dper_DM <- divergence_stratigraphy(
                          query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dpse-all-CDS-r3.1.fasta",
+                         subject_file = "dper-all-CDS-r1.3.fasta",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
                          
                          
+
+# compute the divergence map of D. melanogaster vs. D. erecta
+Dmel_vs_Dere_DM <- divergence_stratigraphy(
+                         query_file = "dmel-all-CDS-r5.53.fasta",
+                         subject_file = "dere-all-CDS-r1.3.fasta",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+
+
 
 # compute the divergence map of D. melanogaster vs. D. virilis
 Dmel_vs_Dvir_DM <- divergence_stratigraphy(
@@ -192,10 +193,10 @@ Ath_vs_Aly_DM <- divergence_stratigraphy(
                          
 
 
-# compute the divergence map of A. thaliana vs. B. rapa
-Ath_vs_Brapa_DM <- divergence_stratigraphy(
+# compute the divergence map of A. thaliana vs. C. papaya
+Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
                          query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Brapa_197_cds.fa",
+                         subject_file = "Cpapaya_113_cds.fa",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
   
@@ -260,8 +261,8 @@ Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_DivergenceExpres
 
 # D. melanogaster vs. D. simulans
 Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
-# D. melanogaster vs. D. pseudoobscura
-Dmel_Dpse_DivergenceExpressionSet <- read.csv("dmel_dpse_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+# D. melanogaster vs. D. erecta
+Dmel_Dere_DivergenceExpressionSet <- read.csv("dmel_dere_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. persimilis
 Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. virilis
@@ -273,7 +274,7 @@ Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_DivergenceExpressionSet
 # A. thaliana vs A. lyrata
 Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. B. rapa 
-Ath_Bra_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Cpapaya_DivergenceExpressionSet <- read.csv("Athaliana_Cpapaya_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. T. halophila
 Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. rubella
@@ -484,7 +485,7 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Dmel_Dpse_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Dmel_Dere_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
             ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
@@ -495,7 +496,7 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Dmel_Dpse_DivergenceExpressionSet : ",nrow(Dmel_Dpse_DivergenceExpressionSet), " genes."))
+cat(paste0("Dmel_ere_DivergenceExpressionSet : ",nrow(Dmel_ere_DivergenceExpressionSet), " genes."))
 cat("\n")
 
 
@@ -539,20 +540,6 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Ath_Bra_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
-            permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
-            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
-
-
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
-box()
-title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
-
-cat(paste0("Ath_Bra_DivergenceExpressionSet : ",nrow(Ath_Bra_DivergenceExpressionSet), " genes."))
-cat("\n")
-
 
 PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
@@ -561,7 +548,7 @@ PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglas
 
 
 par(xpd = TRUE)
-legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
@@ -575,7 +562,7 @@ PlotPattern(Ath_Crub_DivergenceExpressionSet , TestStatistic = "ReductiveHourgla
 
 
 par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
@@ -583,6 +570,23 @@ cat(paste0("Ath_Crub_DivergenceExpressionSet : ",nrow(Ath_Crub_DivergenceExpress
 cat("\n")
 
 dev.off()
+
+PlotPattern(Ath_Cpapaya_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+            permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
+            shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
+            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+
+
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+box()
+title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+
+cat(paste0("Ath_Cpapaya_DivergenceExpressionSet : ",nrow(Ath_Cpapaya_DivergenceExpressionSet), " genes."))
+cat("\n")
+
+
+
 ```
 
 # Supplementary Figure 4
