@@ -191,15 +191,6 @@ Ath_vs_Aly_DM <- divergence_stratigraphy(
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
                          
-
-
-# compute the divergence map of A. thaliana vs. C. papaya
-Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
-                         query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Cpapaya_113_cds.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
-  
   
   
 # compute the divergence map of A. thaliana vs. C. rubella
@@ -210,18 +201,34 @@ Ath_vs_Crubella_DM <- divergence_stratigraphy(
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
                          
 
+
 # compute the divergence map of A. thaliana vs. T. halophila
 Ath_vs_Thalophila_DM <- divergence_stratigraphy(
                          query_file = "Athaliana_167_cds.fa",
                          subject_file = "Thalophila_173_cds.fa",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         
+                         
+
+# compute the divergence map of A. thaliana vs. C. papaya
+Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
+                         query_file = "Athaliana_167_cds.fa",
+                         subject_file = "Cpapaya_113_cds.fa",
+                         eval = "1E-5", ortho_detection = "RBH",
+                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
 
 ```
 
+## Mapping genes ids
+
 It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
 are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
-See `?myTAI::MatchMap` for details.
+See `?myTAI::MatchMap` for details. However, the `MatchMap()` function can only deal with same gene ids
+present in the Phyo/Divergence-Maps and the corresponding gene expression set. For the D. melanogaster
+expression set the gene ids did not match with the gene ids in the corresponding fasta file. Therefore, we
+used the [biomaRt](http://www.bioconductor.org/packages/release/bioc/html/biomaRt.html) package to map gene ids
+from the fasta file to the corresponding gene expression data.
 
 
 ## Reading PhyloExpressionSets and DivergenceExpressionSets
@@ -273,13 +280,12 @@ Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_DivergenceExpressionSet
 # Arabidopsis thaliana
 # A. thaliana vs A. lyrata
 Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
-# A thaliana vs. B. rapa 
-Ath_Cpapaya_DivergenceExpressionSet <- read.csv("Athaliana_Cpapaya_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. T. halophila
 Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. rubella
 Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
-
+# A thaliana vs. C. papaya 
+Ath_Cpapaya_DivergenceExpressionSet <- read.csv("Athaliana_Cpapaya_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 
 ```
 
@@ -423,21 +429,20 @@ dev.off()
 ```r
 svg("S1.svg",width = 16.9,height = 5)
 par(mfrow = c(1,3))
-par(mar = c(1.5, 0.5, 0.5, 0.1))
-par(mai = c(1.4,0.6,0.5,0.1))
-par(mgp = c(8,1,0))
+par(mar = c(1.5, 0.5, 0.5, 0.5))
+par(mai = c(1.4,0.6,0.5,0.5))
+par(mgp = c(5,1,0))
 
 PlotPattern(Drerio_vs_Frubripes_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
-            ylab = "", xlab = "Ontogeny", main = "Drerio vs T. rubripes", las = 3, cex.lab = 1.5, cex.axis = 1.5)
-
+            ylab = "", xlab = "Ontogeny", main = "D. rerio vs T. rubripes", las = 3, cex.lab = 1.5, cex.axis = 1)
 
 
 par(xpd = TRUE)
 legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
-title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+title(ylab = "TDI", mgp = c(2,0.5,0), cex.lab = 1.5)
 
 cat(paste0("Drerio_vs_Amex_DivergenceExpressionSet : ",nrow(Drerio_vs_Amex_DivergenceExpressionSet), " genes."))
 cat("\n")
@@ -446,13 +451,13 @@ cat("\n")
 PlotPattern(Drerio_vs_Xmac_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. rerio vs X. maculatus", las = 3, cex.lab = 1.5, cex.axis = 1)
 
 
 par(xpd = TRUE)
 legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
-title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+title(ylab = "TDI", mgp = c(2,0.5,0), cex.lab = 1.5)
 
 cat(paste0("Drerio_vs_Xmac_DivergenceExpressionSet : ",nrow(Drerio_vs_Xmac_DivergenceExpressionSet), " genes."))
 cat("\n")
@@ -461,17 +466,19 @@ cat("\n")
 PlotPattern(Drerio_vs_Gmor_DivergenceExpressionSet[ , 1:42] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:18, mid = 19:36, late = 37:40),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkblue", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. rerio vs G. morhua", las = 3, cex.lab = 1.4, cex.axis = 1)
 
 
 par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
+legend("topleft",legend = expression(bold("D")),bty = "n",cex = 1.5,inset = c(-0.08,-0.15))
 box()
-title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
+title(ylab = "TDI", mgp = c(2,0.5,0), cex.lab = 1.5)
 
 cat(paste0("Drerio_vs_Gmor_DivergenceExpressionSet : ",nrow(Drerio_vs_Gmor_DivergenceExpressionSet), " genes."))
 
 dev.off()
+
+
 
 ```
 
@@ -485,10 +492,10 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Dmel_Dere_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Dmel_Dyacuba_DivergenceExpressionSet[ , 1:14] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. melanogaster vs D. yacuba",las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -496,14 +503,14 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Dmel_ere_DivergenceExpressionSet : ",nrow(Dmel_ere_DivergenceExpressionSet), " genes."))
+cat(paste0("Dmel_Dyacuba_DivergenceExpressionSet : ",nrow(Dmel_Dyacuba_DivergenceExpressionSet), " genes."))
 cat("\n")
 
 
-PlotPattern(Dmel_Dper_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Dmel_Dper_DivergenceExpressionSet[ , 1:14] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. melanogaster vs D. persimilis", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -514,10 +521,10 @@ title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 cat(paste0("Dmel_Dper_DivergenceExpressionSet : ",nrow(Dmel_Dper_DivergenceExpressionSet), " genes."))
 cat("\n")
 
-PlotPattern(Dmel_Dvir_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Dmel_Dvir_DivergenceExpressionSet[ , 1:14] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. melanogaster vs D. virilis", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -540,11 +547,10 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-
-PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Ath_Crub_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "A. thaliana vs C. rubella", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -552,13 +558,15 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Ath_Tha_DivergenceExpressionSet : ",nrow(Ath_Tha_DivergenceExpressionSet), " genes."))
+cat(paste0("Ath_Crub_DivergenceExpressionSet : ",nrow(Ath_Crub_DivergenceExpressionSet), " genes."))
 cat("\n")
 
-PlotPattern(Ath_Crub_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+
+
+PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "A. thaliana vs T. halophila", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -566,15 +574,14 @@ legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Ath_Crub_DivergenceExpressionSet : ",nrow(Ath_Crub_DivergenceExpressionSet), " genes."))
+cat(paste0("Ath_Tha_DivergenceExpressionSet : ",nrow(Ath_Tha_DivergenceExpressionSet), " genes."))
 cat("\n")
 
-dev.off()
 
 PlotPattern(Ath_Cpapaya_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
-            ylab = "", xlab = "Ontogeny", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "A. thaliana vs C. papaya", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -586,6 +593,7 @@ cat(paste0("Ath_Cpapaya_DivergenceExpressionSet : ",nrow(Ath_Cpapaya_DivergenceE
 cat("\n")
 
 
+dev.off()
 
 ```
 
@@ -595,13 +603,17 @@ cat("\n")
 svg("S4.svg",width = 8,height = 5)
 PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest",
             modules = list(early = 1:18, mid = 19:36, late = 37:61), shaded.area = TRUE, 
-            type = "l", lwd = 9,xlab = "Ontogeny", ylab = "TDI")
+            type = "l", lwd = 9,xlab = "Ontogeny", ylab = "TDI", main = "D. rerio vs A. mexicanus")
 
 dev.off()
 ```
 
 
 ### Suppl_Figure 5
+
+This figure shall illustrate how the test statistic for the `Reductive Hourglass Test` is build.
+Here we only show an example for `Athaliana_PhyloExpressionSet`, but the same procedure can analogously be
+applied to all other `PhyloExpressionSets` and `DivergenceExpressionSets`.
 
 ```r
 library(myTAI)
