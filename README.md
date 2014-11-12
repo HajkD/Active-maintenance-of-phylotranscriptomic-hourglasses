@@ -220,7 +220,7 @@ Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
 
 ```
 
-## Mapping genes ids
+## Mapping gene ids
 
 It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
 are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
