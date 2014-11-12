@@ -202,10 +202,10 @@ Ath_vs_Crubella_DM <- divergence_stratigraphy(
                          
 
 
-# compute the divergence map of A. thaliana vs. T. halophila
-Ath_vs_Thalophila_DM <- divergence_stratigraphy(
+# compute the divergence map of A. thaliana vs. B. rapa
+Ath_vs_Brapa_DM <- divergence_stratigraphy(
                          query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Thalophila_173_cds.fa",
+                         subject_file = "Brapa_197_cds.fa",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
                          
@@ -225,10 +225,7 @@ Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
 It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
 are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
 See `?myTAI::MatchMap` for details. However, the `MatchMap()` function can only deal with identical gene ids
-present in the Phyo/Divergence-Maps and the corresponding gene expression set. For the D. melanogaster
-expression set the gene ids did not match with the gene ids in the corresponding fasta file. Therefore, we
-used the [biomaRt](http://www.bioconductor.org/packages/release/bioc/html/biomaRt.html) package to map gene ids
-from the fasta file to the corresponding gene expression data.
+present in the Phyo/Divergence-Maps and the corresponding gene expression set. 
 
 
 ## Reading PhyloExpressionSets and DivergenceExpressionSets
@@ -281,7 +278,7 @@ Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_DivergenceExpressionSet
 # A. thaliana vs A. lyrata
 Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. T. halophila
-Ath_Tha_DivergenceExpressionSet <- read.csv("Athaliana_Thalophila_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Brapa_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. rubella
 Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # A thaliana vs. C. papaya 
