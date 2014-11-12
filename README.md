@@ -563,10 +563,10 @@ cat("\n")
 
 
 
-PlotPattern(Ath_Tha_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Ath_Brapa_DivergenceExpressionSet , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:2, mid = 3:5, late = 6:7),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "darkgreen", 
-            ylab = "", xlab = "Ontogeny", main = "A. thaliana vs T. halophila", las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "A. thaliana vs B. rapa", las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -574,7 +574,7 @@ legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Ath_Tha_DivergenceExpressionSet : ",nrow(Ath_Tha_DivergenceExpressionSet), " genes."))
+cat(paste0("Ath_Brapa_DivergenceExpressionSet : ",nrow(Ath_Brapa_DivergenceExpressionSet), " genes."))
 cat("\n")
 
 
