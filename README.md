@@ -59,7 +59,7 @@ The CDS retrieval can be done using a `Terminal` or by manual downloading the fi
 ### For D. melanogaster
 * ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r5.53_FB2013_05/fasta/dmel-all-CDS-r5.53.fasta.gz
 * ftp://ftp.flybase.net/genomes/Drosophila_simulans/dsim_r1.4_FB2012_03/fasta/dsim-all-CDS-r1.4.fasta.gz
-* ftp://ftp.flybase.net/genomes/Drosophila_erecta/dere_r1.3_FB2014_03/fasta/dere-all-CDS-r1.3.fasta.gz
+* ftp://ftp.flybase.net/genomes/Drosophila_yakuba/dyak_r1.3_FB2011_08/fasta/dyak-all-CDS-r1.3.fasta.gz
 * ftp://ftp.flybase.net/genomes/Drosophila_persimilis/dper_r1.3_FB2014_03/fasta/dper-all-CDS-r1.3.fasta.gz
 * ftp://ftp.flybase.net/genomes/Drosophila_virilis/dvir_r1.2_FB2012_01/fasta/dvir-all-CDS-r1.2.fasta.gz
 
@@ -164,10 +164,10 @@ Dmel_vs_Dper_DM <- divergence_stratigraphy(
                          
                          
 
-# compute the divergence map of D. melanogaster vs. D. erecta
-Dmel_vs_Dere_DM <- divergence_stratigraphy(
+# compute the divergence map of D. melanogaster vs. D. yakuba
+Dmel_vs_Dyak_DM <- divergence_stratigraphy(
                          query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dere-all-CDS-r1.3.fasta",
+                         subject_file = "dyak-all-CDS-r1.3.fasta",
                          eval = "1E-5", ortho_detection = "RBH",
                          comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
 
@@ -265,8 +265,8 @@ Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_DivergenceExpres
 
 # D. melanogaster vs. D. simulans
 Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
-# D. melanogaster vs. D. erecta
-Dmel_Dere_DivergenceExpressionSet <- read.csv("dmel_dere_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+# D. melanogaster vs. D. yakuba
+Dmel_Dyak_DivergenceExpressionSet <- read.csv("dmel_dyak_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. persimilis
 Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. melanogaster vs. D. virilis
@@ -489,10 +489,10 @@ par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
 par(mgp = c(8,1,0))
 
-PlotPattern(Dmel_Dyacuba_DivergenceExpressionSet[ , 1:14] , TestStatistic = "ReductiveHourglassTest", 
+PlotPattern(Dmel_Dyakuba_DivergenceExpressionSet[ , 1:14] , TestStatistic = "ReductiveHourglassTest", 
             permutations = 10000, modules = list(early = 1:3, mid = 4:5, late = 6:12),
             shaded.area = TRUE, p.value = TRUE, y.ticks = 5, type = "l", lwd = 6, col = "magenta", 
-            ylab = "", xlab = "Ontogeny", main = "D. melanogaster vs D. yacuba",las = 3, cex.lab = 1.5, cex.axis = 1.5)
+            ylab = "", xlab = "Ontogeny", main = "D. melanogaster vs D. yakuba",las = 3, cex.lab = 1.5, cex.axis = 1.5)
 
 
 par(xpd = TRUE)
@@ -500,7 +500,7 @@ legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.5,inset = c(-0
 box()
 title(ylab = "TDI", mgp = c(3,0.5,0), cex.lab = 1.5)
 
-cat(paste0("Dmel_Dyacuba_DivergenceExpressionSet : ",nrow(Dmel_Dyacuba_DivergenceExpressionSet), " genes."))
+cat(paste0("Dmel_Dyakuba_DivergenceExpressionSet : ",nrow(Dmel_Dyakuba_DivergenceExpressionSet), " genes."))
 cat("\n")
 
 
@@ -594,7 +594,7 @@ dev.off()
 
 ```
 
-# Supplementary Figure 4
+### Suppl_Figure 4
 
 ```r
 svg("S4.svg",width = 8,height = 5)
