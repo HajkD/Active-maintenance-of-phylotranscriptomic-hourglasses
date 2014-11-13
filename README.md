@@ -69,7 +69,7 @@ The CDS retrieval can be done using a `Terminal` or by manual downloading the fi
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Alyrata/annotation/Alyrata_107_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Cpapaya/annotation/Cpapaya_113_cds.fa.gz
 * ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Crubella/annotation/Crubella_183_cds.fa.gz
-* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Thalophila/annotation/Thalophila_117_cds_fa.gz
+* ftp://ftp.jgi-psf.org/pub/compgen/phytozome/v9.0/Brapa/annotation/Brapa_197_cds.fa.gz
 
 This is an example shell script how to download the CDS files listed above:
 
