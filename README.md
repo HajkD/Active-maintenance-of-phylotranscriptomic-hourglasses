@@ -35,6 +35,10 @@ library(myTAI)
 install.packages("gdata")
 library(gdata)
 
+# install the Biostrings package from Bioconductor
+source("http://bioconductor.org/biocLite.R")
+biocLite("Biostrings")
+
 ```
 
 
