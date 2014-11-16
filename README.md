@@ -19,6 +19,8 @@ Following steps are performed to obtain a standard divergence map based on the `
 
 5) Assigning estimated dNdS values to divergence strata (deciles of all dNdS values)
 
+When using the `divergence_stratigraphy()` function implemented in `orthologr` it is assumed that you have BLAST installed on your machine.
+
 
 ```r
 
@@ -241,48 +243,48 @@ library(gdata)
 ### read data sets
 
 ## read PhyloExpressionSets
-Drerio_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 1)
-Dmelanogaster_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 2)
-Athaliana_PhyloExpressionSet <- read.xls("TAI_computation_data.xls",sheet = 3)
+Drerio_PhyloExpressionSet <- read.xls("Supplementary table S3.xls",sheet = 1)
+Dmelanogaster_PhyloExpressionSet <- read.xls("Supplementary table S3.xls",sheet = 2)
+Athaliana_PhyloExpressionSet <- read.xls("Supplementary table S3.xls",sheet = 3)
 
 
 ## read DivergenceExpressionSets
 
 # Danio rerio
 
-# D. rerio vs. F. rubripes
-Drerio_vs_Frubripes_DivergenceExpressionSet <- read.csv("Danio_Takifugu_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
 # D. rerio vs. A. mexicanus
-Drerio_vs_Amex_DivergenceExpressionSet <- read.csv("Danio_Astyanax_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Drerio_vs_Amex_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 9)
+# D. rerio vs. F. rubripes
+Drerio_vs_Frubripes_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 10)
 # D. rerio vs. X. maculatus
-Drerio_vs_Xmac_DivergenceExpressionSet <- read.csv("Danio_Xiphophorus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Drerio_vs_Xmac_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 11)
 # D. rerio vs. G. morhua
-Drerio_vs_Gmor_DivergenceExpressionSet <- read.csv("Danio_Gadus_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Drerio_vs_Gmor_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 12)
 
 
 
 # Drosophila melanogaster
 
 # D. melanogaster vs. D. simulans
-Dmel_Dsim_DivergenceExpressionSet <- read.csv("dmel_dsim_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Dmel_Dsim_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 1)
 # D. melanogaster vs. D. yakuba
-Dmel_Dyak_DivergenceExpressionSet <- read.csv("dmel_dyak_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Dmel_Dyak_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 2)
 # D. melanogaster vs. D. persimilis
-Dmel_Dper_DivergenceExpressionSet <- read.csv("dmel_dper_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Dmel_Dper_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 3)
 # D. melanogaster vs. D. virilis
-Dmel_Dvir_DivergenceExpressionSet <- read.csv("dmel_dvir_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Dmel_Dvir_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 4)
 
 
 
 # Arabidopsis thaliana
 # A. thaliana vs A. lyrata
-Ath_Aly_DivergenceExpressionSet <- read.csv("Athaliana_Alyrata_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Aly_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 5)
 # A thaliana vs. T. halophila
-Ath_Brapa_DivergenceExpressionSet <- read.csv("Athaliana_Brapa_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Brapa_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 8)
 # A thaliana vs. C. rubella
-Ath_Crub_DivergenceExpressionSet <- read.csv("Athaliana_Crubella_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Crub_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 7)
 # A thaliana vs. C. papaya 
-Ath_Cpapaya_DivergenceExpressionSet <- read.csv("Athaliana_Cpapaya_DivergenceExpressionSet.csv", sep = ";", header = TRUE)
+Ath_Cpapaya_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",sheet = 6)
 
 ```
 
@@ -293,8 +295,6 @@ First load the following packages into the workspace:
 ```r
 
 library(myTAI)
-
-library(gdata)
 
 ```
 
