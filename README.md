@@ -231,7 +231,7 @@ Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
 It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
 are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
 See `?myTAI::MatchMap` for details. However, the `MatchMap()` function can only deal with identical gene ids
-present in the Phyo/Divergence-Maps and the corresponding gene expression set. 
+present in the Phylo/Divergence-Maps and the corresponding gene expression set. 
 
 
 ## Reading PhyloExpressionSets and DivergenceExpressionSets
@@ -294,7 +294,7 @@ Ath_Cpapaya_DivergenceExpressionSet <- read.xls("Supplementary table S5.xls",she
 
 ## Generating Figures
 
-First load the following packages into the workspace:
+First load the following packages into the work space:
 
 ```r
 
