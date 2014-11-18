@@ -598,10 +598,115 @@ dev.off()
 
 ```
 
+
 ### Suppl_Figure 5
 
 ```r
-svg("S4.svg",width = 8,height = 5)
+
+svg("S5.svg",width = 16.9,height = 5)
+par(mfrow = c(1,3))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(3,1,0))
+
+PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Frubripes_DivergenceExpressionSet , 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Xmac_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Gmor_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+dev.off()
+
+```
+
+### Suppl_Figure 6
+
+```r
+svg("S6.svg",width = 16.9,height = 5)
+par(mfrow = c(1,3))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(3,1,0))
+
+PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dyakuba_DivergenceExpressionSet , 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dper_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dvir_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+dev.off()
+
+```
+
+
+### Suppl_Figure 7
+
+```r
+svg("S7.svg",width = 16.9,height = 5)
+par(mfrow = c(1,3))
+par(mar = c(1.5, 0.5, 0.5, 0.1))
+par(mai = c(1.4,0.6,0.5,0.1))
+par(mgp = c(3,1,0))
+
+PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Crub_DivergenceExpressionSet , 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Brapa_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Cpapaya_DivergenceExpressionSet, 
+                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
+                ylab = "Divergencestratum",cex.main = 1.7)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
+box()
+
+dev.off()
+
+```
+
+### Suppl_Figure 8
+
+```r
+svg("S8.svg",width = 8,height = 5)
 PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest",
             modules = list(early = 1:18, mid = 19:36, late = 37:61), shaded.area = TRUE, 
             type = "l", lwd = 9,xlab = "Ontogeny", ylab = "TDI", main = "D. rerio vs A. mexicanus")
@@ -610,7 +715,7 @@ dev.off()
 ```
 
 
-### Suppl_Figure 6
+### Suppl_Figure 9
 
 This figure shall illustrate how the test statistic for the `Reductive Hourglass Test` is build.
 Here we only show an example for `Athaliana_PhyloExpressionSet`, but the same procedure can analogously be
@@ -657,111 +762,6 @@ abline(v = rhScore_real, lwd = 5, col = "red")
 
 
 dev.off()
-```
-
-
-### Suppl_Figure 7
-
-```r
-
-svg("S7.svg",width = 16.9,height = 5)
-par(mfrow = c(1,3))
-par(mar = c(1.5, 0.5, 0.5, 0.1))
-par(mai = c(1.4,0.6,0.5,0.1))
-par(mgp = c(3,1,0))
-
-PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Frubripes_DivergenceExpressionSet , 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Xmac_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Drerio_PhyloExpressionSet, Drerio_vs_Gmor_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-dev.off()
-
-```
-
-### Suppl_Figure 8
-
-```r
-svg("S8.svg",width = 16.9,height = 5)
-par(mfrow = c(1,3))
-par(mar = c(1.5, 0.5, 0.5, 0.1))
-par(mai = c(1.4,0.6,0.5,0.1))
-par(mgp = c(3,1,0))
-
-PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dyakuba_DivergenceExpressionSet , 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dper_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Dmelanogaster_PhyloExpressionSet, Dmel_Dvir_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-dev.off()
-
-```
-
-
-### Suppl_Figure 9
-
-```r
-svg("S9.svg",width = 16.9,height = 5)
-par(mfrow = c(1,3))
-par(mar = c(1.5, 0.5, 0.5, 0.1))
-par(mai = c(1.4,0.6,0.5,0.1))
-par(mgp = c(3,1,0))
-
-PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Crub_DivergenceExpressionSet , 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("A")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Brapa_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("B")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-PlotCorrelation(Athaliana_PhyloExpressionSet, Ath_Cpapaya_DivergenceExpressionSet, 
-                method = "kendall", main.text = "",cex.axis = 1.7,cex.lab = 1.7,xlab = "Phylostratum",
-                ylab = "Divergencestratum",cex.main = 1.7)
-par(xpd = TRUE)
-legend("topleft",legend = expression(bold("C")),bty = "n",cex = 1.7,inset = c(-0.08,-0.15))
-box()
-
-dev.off()
-
 ```
 
 
