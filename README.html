@@ -60,7 +60,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p><strong>Phylostratigraphy</strong> was introduced by <a href="http://www.sciencedirect.com/science/article/pii/S0168952507002995">Domazet-Lošo et al. in 2007</a> to trace the evolutionary origin of protein coding genes. It was performed by using the Perl script <code>createPsMap.pl</code>. The resulting phylostratigraphic map stores the phylostratum in the first column and the corresponding gene id in the second column.</p>
 <p>For creating the phylostratigraphic map the following steps has to be done:</p>
 <ol style="list-style-type: decimal">
-<li><p>Make sure that <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/">BLAST</a> is installed.</p></li>
+<li><p>Make sure that BLAST (<a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/">ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/</a>) is installed.</p></li>
 <li><p>Download the sequence database <a href="http://msbi.ipb-halle.de/download/phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz">phyloBlastDB_Drost_Gabel_Grosse_Quint.fa</a> used for BLAST searches and unpack it (<code>tar xfvj phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz</code>).</p></li>
 <li><p>Make sure that the header of your FASTA-files (e.g. Athaliana_167_protein.fa) fullfills the following specification:<br /> <code>&gt;GeneID | [organism_name] | [taxonomy]</code><br /> Notice, the taxonomy begins after the node “Cellular organisms” e.g.</p>
 <pre class="{terminal}"><code>&gt;NP_146894.1 | [Aeropyrum pernix] | [Archaea; Crenarchaeota; Thermoprotei; Desulfurococcales; Desulfurococcaceae; Aeropyrum]

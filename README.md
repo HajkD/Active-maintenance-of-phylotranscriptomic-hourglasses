@@ -8,7 +8,7 @@ __Phylostratigraphy__ was introduced by <a href="http://www.sciencedirect.com/sc
 
 For creating the phylostratigraphic map the following steps has to be done:
     
-1) Make sure that [BLAST](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/) is installed.
+1) Make sure that BLAST (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/) is installed.
 
 2) Download the sequence database <a href="http://msbi.ipb-halle.de/download/phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz">phyloBlastDB_Drost_Gabel_Grosse_Quint.fa</a> used for BLAST searches and unpack it (`tar xfvj phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz`).
 
