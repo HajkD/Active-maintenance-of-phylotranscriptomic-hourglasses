@@ -24,7 +24,7 @@ or
 ```
 
 4) Use the following command to start the Perl script
-```{bash}
+```terminal
 perl createPsMap.pl -i Athaliana_167_protein_with_new_Header.fa -d phyloBlastDB_Drost_Gabel_Grosse_Quint.fa -p BLAST_Athaliana 
                     -r athaliana_blast_results -t 30 -a 64             
 Arguments:
