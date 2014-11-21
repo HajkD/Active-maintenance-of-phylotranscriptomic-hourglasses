@@ -465,7 +465,7 @@ dev.off()
 ### Suppl_Figure 2
 
 ```r
-svg("S1.svg",width = 16.9,height = 5)
+svg("S2.svg",width = 16.9,height = 5)
 par(mfrow = c(1,3))
 par(mar = c(1.5, 0.5, 0.5, 0.5))
 par(mai = c(1.4,0.6,0.5,0.5))
@@ -524,7 +524,7 @@ dev.off()
 ### Suppl_Figure 3
 
 ```r
-svg("S2.svg",width = 16.9,height = 5)
+svg("S3.svg",width = 16.9,height = 5)
 par(mfrow = c(1,3))
 par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
@@ -579,7 +579,7 @@ dev.off()
 ### Suppl_Figure 4
 
 ```r
-svg("S3.svg",width = 16.9,height = 5)
+svg("S4.svg",width = 16.9,height = 5)
 par(mfrow = c(1,3))
 par(mar = c(1.5, 0.5, 0.5, 0.1))
 par(mai = c(1.4,0.6,0.5,0.1))
@@ -777,11 +777,7 @@ mean_est <- norm_MME$estimate[1]
 sd_est <- norm_MME$estimate[2]
 
 
-svg("S5.svg",width = 12,height = 5)
-par(mfrow=c(1,2))
-
-# generate Cullen and Frey graph
-fitdistrplus::descdist(rhScores)
+svg("S9.svg",width = 9,height = 5)
 
 norm_distr <- function(x){ return(dnorm(x = x,mean = mean_est,sd = sd_est)) }
 
