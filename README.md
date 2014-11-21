@@ -15,7 +15,7 @@ For creating the phylostratigraphic map the following steps has to be done:
 3) Make sure that the header of your FASTA-files (e.g. Athaliana_167_protein.fa) fullfills the following specification:<br />
   <code>>GeneID | [organism_name] | [taxonomy]</code><br />
   Notice, the taxonomy begins after the node "Cellular organisms" e.g.
-```{bash}
+```{terminal}
 >NP_146894.1 | [Aeropyrum pernix] | [Archaea; Crenarchaeota; Thermoprotei; Desulfurococcales; Desulfurococcaceae; Aeropyrum]
 or
 >YP_001514406.1 | [Acaryochloris marina MBIC11017] | [Bacteria; Cyanobacteria; Oscillatoriophycideae; Chroococcales; Acaryochloris; Acaryochloris marina]
