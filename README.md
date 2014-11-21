@@ -240,6 +240,9 @@ After performing __Phylostratigraphy__ and __Divergence Stratigraphy__ PhyloExpr
 DivergenceExpressionSets can be obtained by matching the corresponding _phylostratigraphic maps_ and _divergence maps_ of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ with the corresponding transcriptome data sets covering
 the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ (see Methods in Drost et al., 2014 for details)
 
+
+The following data sets (Supplementary table S3 and S5) can be downloaded [here](http://figshare.com/account/projects/2878).
+
 ```r
 
 library(gdata)
