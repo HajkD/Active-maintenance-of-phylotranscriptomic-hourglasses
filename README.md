@@ -25,14 +25,14 @@ or
 
 4) Use the following command to start the Perl script
 ```{bash}
-perl createPsMap.pl -i Athaliana_167_protein.fa -d phyloBlastDB_Drost_Gabel_Grosse_Quint.fa -p BLAST_Athaliana 
-                        -r athaliana_blast_results -t 30 -a 64             
+perl createPsMap.pl -i Athaliana_167_protein_with_new_Header.fa -d phyloBlastDB_Drost_Gabel_Grosse_Quint.fa -p BLAST_Athaliana 
+                    -r athaliana_blast_results -t 30 -a 64             
 Arguments:
 -i,--input          input file name in FASTA format
 -d,--database       BLAST sequence database name
 -p,--prefix         Prefix for generated mysql-files containing BLAST results
 -r,--resultTable    mysql table name
--t,--threshold      threshold for sequence length (Default 30 AS)
+-t,--threshold      threshold for sequence length (Default 30 amino acids)
 -a                  threads for BLAST searches
 -e,--evalue         e-value threshold for BLAST 
 ```
