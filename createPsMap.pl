@@ -4,53 +4,6 @@
 # -----------
 #
 # perl createPsMap.pl -i Athaliana_peptide.fa -d phyloBlastDB_Drost_Gabel_Grosse_Quint.fa -p BLAST_Athaliana -r athaliana_blast_results -t 30 -a 64
-#
-#
-#
-# Preparation of FASTA-Files:
-# ---------------------------
-#
-# header of FASTA file of the organism of interest has to follow the specification:
-#
-# >GeneID | [organism_name] | [taxonomy]
-#
-# !!! The taxonomy line begins at the nodes of Archaea or Bacteria or Eukaryota !!!
-#
-# examples:
-# ---------
-#
-#
-# >NP_146894.1 | [Aeropyrum pernix] | [Archaea; Crenarchaeota; Thermoprotei; Desulfurococcales; Desulfurococcaceae; Aeropyrum]
-#
-# or
-#
-# >YP_001514406.1 | [Acaryochloris marina MBIC11017] | [Bacteria; Cyanobacteria; Oscillatoriophycideae; Chroococcales; Acaryochloris; Acaryochloris marina]
-#
-# or
-#
-# for A.thaliana
-# grep "\[Arabidopsis thaliana\]" phyloBlastDB.fa | head -1
-#
-# >ATCG00500.1|PACid:19637947 | [Arabidopsis thaliana] | [Eukaryota; Viridiplantae; Streptophyta; Streptophytina; Embryophyta; Tracheophyta; Euphyllophyta; Spermatophyta; Magnoliophyta; eudicotyledons; core eudicotyledons; rosids; malvids; Brassicales; Brassicaceae; Camelineae; Arabidopsis]
-#
-# for D.rerio
-# grep "\[Danio rerio\]" phyloBlastDB.fa | head -1
-#
-# >NP_001083027.1 | [Danio rerio] | [Eukaryota; Opisthokonta; Metazoa; Eumetazoa; Bilateria; Deuterostomia; Chordata; Craniata; Vertebrata; Gnathostomata; Teleostomi; Euteleostomi; Actinopterygii; Actinopteri; Neopterygii; Teleostei; Elopocephala; Clupeocephala; Otocephala; Ostariophysi; Otophysi; Cypriniphysi; Cypriniformes; Cyprinoidea; Cyprinidae; Danio]
-#
-# for D.melanogaster
-# grep "\[Drosophila melanogaster\]" phyloBlastDB.fa | head -1
-#
-# >FBpp0085360 | [Drosophila melanogaster] | [Eukaryota; Opisthokonta; Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Hexapoda; Insecta; Dicondylia; Pterygota; Neoptera; Endopterygota; Diptera; Brachycera; Muscomorpha; Eremoneura; Cyclorrhapha; Schizophora; Acalyptratae; Ephydroidea; Drosophilidae; Drosophilinae; Drosophilini; Drosophilina; Drosophiliti; Drosophila; Sophophora; melanogaster group; melanogaster subgroup]
-#
-#
-# BLAST:
-# ------
-#
-# !!! To run the perl script it is necessary that BLAST and also BioPerl is already installed !!!
-#
-
-
 
 use Bio::SeqIO;
 use Getopt::Long;

@@ -2,6 +2,40 @@
 
 Drost HG, Gabel A, Grosse I, Quint M (2014). __Evidence for active maintenance of phylotranscriptomic hourglass patterns in animal and plant embryogenesis__ Mol. Biol. Evol. (In Review)
 
+## Performing Phylostratigraphy
+
+__Phylostratigraphy__ was introduced by <a href="http://www.sciencedirect.com/science/article/pii/S0168952507002995">Domazet-Lo&scaron;o et al. in 2007</a> to trace the evolutionary origin of protein coding genes. It was performed by using the Perl script `createPsMap.pl`. The resulting phylostratigraphic map stores the phylostratum in the first column and the corresponding gene id in the second column.
+
+For creating the phylostratigraphic map the following steps has to be done:
+    
+1) Make sure that <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.21/">BLAST</a> is installed.
+
+2) Download the sequence database <a href="http://msbi.ipb-halle.de/download/phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz">phyloBlastDB_Drost_Gabel_Grosse_Quint.fa</a> used for BLAST searches and unpack it (`tar xfvj phyloBlastDB_Drost_Gabel_Grosse_Quint.fa.tbz`).
+
+3) Make sure that the header of your FASTA-files (e.g. Athaliana_167_protein.fa) fullfills the following specification:<br />
+  <code>>GeneID | [organism_name] | [taxonomy]</code><br />
+  Notice, the taxonomy begins after the node "Cellular organisms" e.g.
+```{bash}
+>NP_146894.1 | [Aeropyrum pernix] | [Archaea; Crenarchaeota; Thermoprotei; Desulfurococcales; Desulfurococcaceae; Aeropyrum]
+or
+>YP_001514406.1 | [Acaryochloris marina MBIC11017] | [Bacteria; Cyanobacteria; Oscillatoriophycideae; Chroococcales; Acaryochloris; Acaryochloris marina]
+or
+>ATCG00500.1|PACid:19637947 | [Arabidopsis thaliana] | [Eukaryota; Viridiplantae; Streptophyta; Streptophytina; Embryophyta; Tracheophyta; Euphyllophyta; Spermatophyta; Magnoliophyta; eudicotyledons; core eudicotyledons; rosids; malvids; Brassicales; Brassicaceae; Camelineae; Arabidopsis]
+```
+
+4) Use the following command to start the Perl script
+```{bash}
+perl createPsMap.pl -i Athaliana_167_protein.fa -d phyloBlastDB_Drost_Gabel_Grosse_Quint.fa -p BLAST_Athaliana 
+                        -r athaliana_blast_results -t 30 -a 64             
+Arguments:
+-i,--input          input file name in FASTA format
+-d,--database       BLAST sequence database name
+-p,--prefix         Prefix for generated mysql-files containing BLAST results
+-r,--resultTable    mysql table name
+-t,--threshold      threshold for sequence length (Default 30 AS)
+-a                  threads for BLAST searches
+-e,--evalue         e-value threshold for BLAST 
+```
 
 ## Performing Divergence Stratigraphy
 
