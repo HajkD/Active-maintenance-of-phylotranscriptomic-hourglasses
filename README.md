@@ -1,4 +1,4 @@
-# Reproducible Scripts for the publication: 
+# Reproducible Scripts for the Publication: 
 
 Drost HG, Gabel A, Grosse I, Quint M (2014). __Evidence for active maintenance of phylotranscriptomic hourglass patterns in animal and plant embryogenesis__ Mol. Biol. Evol. (In Review)
 
@@ -76,7 +76,7 @@ biocLite("Biostrings")
 ```
 
 
-### Retrieving divergence maps for D. rerio, D. melanogaster, and A. thaliana
+### Retrieving Divergence Maps for D. rerio, D. melanogaster, and A. thaliana
 
 To perform __Divergence Stratigraphy__ using `orthologr` you need the following prerequisites
 
@@ -146,40 +146,52 @@ library(orthologr)
 
 # compute the divergence map of D. rerio vs. T. rubripes
 Drerio_vs_Trubripes_DM <- divergence_stratigraphy(
-                         query_file = "Danio_rerio.Zv9.cds.all.fa",
-                         subject_file = "Takifugu_rubripes.FUGU4.cds.all.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file    = "Takifugu_rubripes.FUGU4.cds.all.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
 
 
 
 # compute the divergence map of D. rerio vs. A. mexicanus
 Drerio_vs_Amexicanus_DM <- divergence_stratigraphy(
-                         query_file = "Danio_rerio.Zv9.cds.all.fa",
-                         subject_file = "Astyanax_mexicanus.AstMex102.cds.all.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file    = "Astyanax_mexicanus.AstMex102.cds.all.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
                          
                          
 
 # compute the divergence map of D. rerio vs. X. maculatus
 Drerio_vs_Xmaculatus_DM <- divergence_stratigraphy(
-                         query_file = "Danio_rerio.Zv9.cds.all.fa",
-                         subject_file = "Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file    = "Xiphophorus_maculatus.Xipmac4.4.2.cds.all.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
 
 
 
 
 # compute the divergence map of D. rerio vs. G. morhua
 Drerio_vs_Gmorhua_DM <- divergence_stratigraphy(
-                         query_file = "Danio_rerio.Zv9.cds.all.fa",
-                         subject_file = "Gadus_morhua.gadMor1.cds.all.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Danio_rerio.Zv9.cds.all.fa",
+                         subject_file    = "Gadus_morhua.gadMor1.cds.all.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
 
 
 
@@ -188,37 +200,49 @@ Drerio_vs_Gmorhua_DM <- divergence_stratigraphy(
 
 # compute the divergence map of D. melanogaster vs. D. simulans
 Dmel_vs_Dsim_DM <- divergence_stratigraphy(
-                         query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dsim-all-CDS-r1.4.fasta",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "dmel-all-CDS-r5.53.fasta",
+                         subject_file    = "dsim-all-CDS-r1.4.fasta",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
 
 
 # compute the divergence map of D. melanogaster vs. D. persimilis
 Dmel_vs_Dper_DM <- divergence_stratigraphy(
-                         query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dper-all-CDS-r1.3.fasta",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "dmel-all-CDS-r5.53.fasta",
+                         subject_file    = "dper-all-CDS-r1.3.fasta",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
                          
 
 # compute the divergence map of D. melanogaster vs. D. yakuba
 Dmel_vs_Dyak_DM <- divergence_stratigraphy(
-                         query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dyak-all-CDS-r1.3.fasta",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "dmel-all-CDS-r5.53.fasta",
+                         subject_file    = "dyak-all-CDS-r1.3.fasta",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
 
 
 
 # compute the divergence map of D. melanogaster vs. D. virilis
 Dmel_vs_Dvir_DM <- divergence_stratigraphy(
-                         query_file = "dmel-all-CDS-r5.53.fasta",
-                         subject_file = "dvir-all-CDS-r1.2.fasta",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "dmel-all-CDS-r5.53.fasta",
+                         subject_file    = "dvir-all-CDS-r1.2.fasta",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
 
 
@@ -226,41 +250,53 @@ Dmel_vs_Dvir_DM <- divergence_stratigraphy(
 
 # compute the divergence map of A. thaliana vs. A. lyrata
 Ath_vs_Aly_DM <- divergence_stratigraphy(
-                         query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Alyrata_107_cds.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Athaliana_167_cds.fa",
+                         subject_file    = "Alyrata_107_cds.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
   
   
 # compute the divergence map of A. thaliana vs. C. rubella
 Ath_vs_Crubella_DM <- divergence_stratigraphy(
-                         query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Crubella_183_cds.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Athaliana_167_cds.fa",
+                         subject_file    = "Crubella_183_cds.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
 
 
 # compute the divergence map of A. thaliana vs. B. rapa
 Ath_vs_Brapa_DM <- divergence_stratigraphy(
-                         query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Brapa_197_cds.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Athaliana_167_cds.fa",
+                         subject_file    = "Brapa_197_cds.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
                          
                          
 
 # compute the divergence map of A. thaliana vs. C. papaya
 Ath_vs_Cpapaya_DM <- divergence_stratigraphy(
-                         query_file = "Athaliana_167_cds.fa",
-                         subject_file = "Cpapaya_113_cds.fa",
-                         eval = "1E-5", ortho_detection = "RBH",
-                         comp_cores = 1, quiet = TRUE, clean_folders = TRUE )
+                         query_file      = "Athaliana_167_cds.fa",
+                         subject_file    = "Cpapaya_113_cds.fa",
+                         eval            = "1E-5", 
+                         ortho_detection = "RBH",
+                         comp_cores      = 1, 
+                         quiet           = TRUE, 
+                         clean_folders   = TRUE )
 
 ```
 
-## Mapping gene ids
+## Mapping Gene IDs
 
 It is now assumed that the Divergence Map of interest and the corresponding gene expression data set
 are joined. For this purpose the `MatchMap()` function implemented in the `myTAI` package can be used.
