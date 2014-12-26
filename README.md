@@ -275,7 +275,7 @@ DivergenceExpressionSets can be obtained by matching the corresponding _phylostr
 the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ (see Methods in Drost et al., 2014 for details)
 
 
-The following data sets (Supplementary table S3 and S5) can be downloaded [here](http://figshare.com/account/projects/2878).
+The following data sets (Supplementary table S3 and S5) can be downloaded here : [Supplementary table S3.xls](http://figshare.com/articles/Supplementary_table_S3/1244948) and [Supplementary table S5.xls](http://figshare.com/articles/Supplementary_table_S5/1244950).
 
 ```r
 
