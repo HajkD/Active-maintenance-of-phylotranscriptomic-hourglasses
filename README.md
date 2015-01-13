@@ -1,6 +1,6 @@
 # Reproducible Scripts for the Publication: 
 
-Drost HG, Gabel A, Grosse I, Quint M (2014). __Evidence for active maintenance of phylotranscriptomic hourglass patterns in animal and plant embryogenesis__ Mol. Biol. Evol. (In Review)
+Drost HG, Gabel A, Grosse I, Quint M (2015). __Evidence for active maintenance of phylotranscriptomic hourglass patterns in animal and plant embryogenesis__ Mol. Biol. Evol. (In Review)
 
 ## Performing Phylostratigraphy
 
@@ -39,7 +39,7 @@ Arguments:
 
 ## Performing Divergence Stratigraphy
 
-__Divergence Stratigraphy__ is the process of quantifying the selection pressure (in terms of amino acid sequence divergence) acting on orthologous genes between closely related species. The resulting sequence divergence map (short divergence map), stores the divergence stratum in the first column and the query_id of inferred orthologous genes in the second column ([Quint et al., 2012](http://www.nature.com/nature/journal/v490/n7418/full/nature11394.html); Drost et al., 2014).
+__Divergence Stratigraphy__ is the process of quantifying the selection pressure (in terms of amino acid sequence divergence) acting on orthologous genes between closely related species. The resulting sequence divergence map (short divergence map), stores the divergence stratum in the first column and the query_id of inferred orthologous genes in the second column ([Quint et al., 2012](http://www.nature.com/nature/journal/v490/n7418/full/nature11394.html); Drost et al., 2015).
 
 Following steps are performed to obtain a standard divergence map based on the `divergence_stratigraphy()` function:
 
@@ -308,7 +308,7 @@ present in the Phylo/Divergence-Maps and the corresponding gene expression set.
 
 After performing __Phylostratigraphy__ and __Divergence Stratigraphy__ PhyloExpressionSets and
 DivergenceExpressionSets can be obtained by matching the corresponding _phylostratigraphic maps_ and _divergence maps_ of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ with the corresponding transcriptome data sets covering
-the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ (see Methods in Drost et al., 2014 for details)
+the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis thaliana_ (see Methods in Drost et al., 2015 for details)
 
 
 The following data sets (Supplementary table S3 and S5) can be downloaded here : [Supplementary table S3.xls](http://figshare.com/articles/Supplementary_table_S3/1244948) and [Supplementary table S5.xls](http://figshare.com/articles/Supplementary_table_S5/1244950).
@@ -779,6 +779,50 @@ dev.off()
 ### Suppl_Figure 8
 
 ```r
+# read embryo defective genes
+Ath <- read.csv("EmbryoDefective_Expression.csv", sep = ";", header = TRUE)
+
+Ath_MeanProfile <- colMeans(Ath[ , 2:8])
+
+std_error <- function(x){sd(x)/sqrt(length(x))}
+
+svg("S8A.svg",width = 8,height = 6)
+
+plot(Ath_MeanProfile,
+    type = "l", lwd = 6,cex.axis = 1.3, cex.lab = 1.3, ylim = c(2600,4600),
+    xaxt = "n",xlab = "Ontogeny", ylab = "Expression Level")
+
+axis(1, 1:7, names(Ath[ , 2:8]),cex.axis = 1.3, cex.lab = 1.3)
+
+lines(Ath_MeanProfile + apply(Ath[ , 2:8],2,std_error), col = "lightgrey", lwd = 6)
+lines(Ath_MeanProfile - apply(Ath[ , 2:8],2,std_error), col = "lightgrey", lwd = 6)
+legend("bottom",legend = c("Mean EDG Expression","std. error"), fill = c("black","lightgrey"), bty = "n", cex = 2)
+par(xpd = TRUE)
+legend("topleft",legend = expression(bold("A")),bty = "n",cex = 2,inset = c(-0.08,-0.15))
+
+dev.off()
+
+
+```
+
+Performing Statistical Tests
+
+```r
+# install.packages(dunn.test)
+library("dunn.test")
+
+# perform a Kruskal-Wallis Rank Sum Test
+kruskal.test(Ath[ , 2:8])
+
+# perform Dunn's test of multiple comparisons using rank sums
+dunn.test(Ath[ , 2:8], method = "bh")
+
+```
+
+
+### Suppl_Figure 9
+
+```r
 svg("S8.svg",width = 8,height = 5)
 PlotPattern(Drerio_vs_Amex_DivergenceExpressionSet, TestStatistic = "ReductiveHourglassTest",
             modules = list(early = 1:18, mid = 19:36, late = 37:61), shaded.area = TRUE, 
@@ -788,7 +832,7 @@ dev.off()
 ```
 
 
-### Suppl_Figure 9
+### Suppl_Figure 10
 
 This figure shall illustrate how the test statistic for the `Reductive Hourglass Test` is build.
 Here we only show an example for `Athaliana_PhyloExpressionSet`, but the same procedure can analogously be
