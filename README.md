@@ -808,8 +808,8 @@ dev.off()
 Performing Statistical Tests
 
 ```r
-# install.packages(dunn.test)
-library("dunn.test")
+# install.packages("dunn.test")
+library(dunn.test)
 
 # perform a Kruskal-Wallis Rank Sum Test
 kruskal.test(Ath[ , 2:8])
