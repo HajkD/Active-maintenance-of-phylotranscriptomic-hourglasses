@@ -1,6 +1,6 @@
 # Reproducible Scripts for the Publication: 
 
-Drost HG, Gabel A, Grosse I, Quint M (2015). __Evidence for Active Maintenance of Phylotranscriptomic Hourglass Patterns in Animal and Plant Embryogenesis__. Mol. Biol. Evol. [doi:10.1093/molbev/msv012](http://mbe.oxfordjournals.org/content/early/2015/03/05/molbev.msv012.short).
+Drost HG, Gabel A, Grosse I, Quint M. __Evidence for Active Maintenance of Phylotranscriptomic Hourglass Patterns in Animal and Plant Embryogenesis__. Mol. Biol. Evol. (2015) 32 (5) 1221-1231.  [doi:10.1093/molbev/msv012](http://mbe.oxfordjournals.org/content/early/2015/03/05/molbev.msv012.short).
 
 
 ## Performing Phylostratigraphy
