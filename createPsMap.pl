@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+##### Author: Alexander Gabel
+
 # How to use:
 # -----------
 #
