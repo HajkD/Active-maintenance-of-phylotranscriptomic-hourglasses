@@ -7,7 +7,9 @@ Drost HG, Gabel A, Grosse I, Quint M. __Evidence for Active Maintenance of Phylo
 
 __A new version of the Phylostratigraphy algorithm implemented by Alexander Gabel can be found at:__ [https://github.com/AlexGa/Phylostratigraphy](https://github.com/AlexGa/Phylostratigraphy).
 
-We recommand to use the new version due to easier applicability to any genome of interest. 
+__We recommand to use the new version due to easier applicability to any genome of interest.__ 
+
+Proceed with the old version used to generate the phylostratigraphic maps in the publication:
 
 __Phylostratigraphy__ was introduced by <a href="http://www.sciencedirect.com/science/article/pii/S0168952507002995">Domazet-Lo&scaron;o et al. in 2007</a> to trace the evolutionary origin of protein coding genes. It was performed by using the Perl script `createPsMap.pl` (implemented (cc) by Alexander Gabel). The resulting phylostratigraphic map stores the phylostratum in the first column and the corresponding gene id in the second column.
 
@@ -58,7 +60,7 @@ Following steps are performed to obtain a standard divergence map based on the `
 
 5) Assigning estimated dNdS values to divergence strata (deciles of all dNdS values)
 
-When using the `divergence_stratigraphy()` function implemented in `orthologr` it is assumed that you have BLAST installed on your machine.
+When using the `divergence_stratigraphy()` function implemented in [orthologr](https://github.com/HajkD/orthologr) it is assumed that you have BLAST installed on your machine.
 
 
 ```r
@@ -83,7 +85,7 @@ biocLite("Biostrings")
 
 ### Retrieving Divergence Maps for D. rerio, D. melanogaster, and A. thaliana
 
-To perform __Divergence Stratigraphy__ using `orthologr` you need the following prerequisites
+To perform __Divergence Stratigraphy__ using [orthologr](https://github.com/HajkD/orthologr) users need the following prerequisites
 
 * a CDS file covering all protein coding genes of the query organism of interest
 * a CDS file covering all protein coding genes of the subject organism of interest
