@@ -5,7 +5,11 @@ Drost HG, Gabel A, Grosse I, Quint M. __Evidence for Active Maintenance of Phylo
 
 ## Performing Phylostratigraphy
 
-__Phylostratigraphy__ was introduced by <a href="http://www.sciencedirect.com/science/article/pii/S0168952507002995">Domazet-Lo&scaron;o et al. in 2007</a> to trace the evolutionary origin of protein coding genes. It was performed by using the Perl script `createPsMap.pl`. The resulting phylostratigraphic map stores the phylostratum in the first column and the corresponding gene id in the second column.
+__A new version of the Phylostratigraphy algorithm implemented by Alexander Gabel can be found at:__ [https://github.com/AlexGa/Phylostratigraphy](https://github.com/AlexGa/Phylostratigraphy).
+
+We recommand to use the new version due to easier applicability to any genome of interest. 
+
+__Phylostratigraphy__ was introduced by <a href="http://www.sciencedirect.com/science/article/pii/S0168952507002995">Domazet-Lo&scaron;o et al. in 2007</a> to trace the evolutionary origin of protein coding genes. It was performed by using the Perl script `createPsMap.pl` (implemented (cc) by Alexander Gabel). The resulting phylostratigraphic map stores the phylostratum in the first column and the corresponding gene id in the second column.
 
 For creating the phylostratigraphic map the following steps have to be done:
     
