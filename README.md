@@ -7,7 +7,7 @@ Drost HG, Gabel A, Grosse I, Quint M. __Evidence for Active Maintenance of Phylo
 
 __A new version of the Phylostratigraphy algorithm implemented by Alexander Gabel can be found at:__ [https://github.com/AlexGa/Phylostratigraphy](https://github.com/AlexGa/Phylostratigraphy).
 
-__We recommand to use the new version due to easier applicability to any genome of interest.__ 
+__We recommend to use the new version for performing custom phylostratigraphy due to easier applicability to any genome of interest. The older version implemented by Alexander is useful to repreduce the results shown in this study, but was not implemented to be applicable to any genome of interest.__ 
 
 Proceed with the old version used to generate the phylostratigraphic maps in the publication:
 
