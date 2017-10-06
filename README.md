@@ -320,6 +320,8 @@ the embryogenesis of _Danio rerio_, _Drosophila melanogaster_, and _Arabidopsis 
 
 The following data sets (Supplementary table S3 and S5) can be downloaded here : [Supplementary table S3.xls](http://figshare.com/articles/Supplementary_table_S3/1244948) and [Supplementary table S5.xls](http://figshare.com/articles/Supplementary_table_S5/1244950).
 
+Please note, that for D. melanogaster we retrieved already processed gene expression levels from http://www.stat.ucla.edu/~jingyi.li/software-and-data.html .
+
 ```r
 
 library(gdata)
